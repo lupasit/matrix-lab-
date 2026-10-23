@@ -52,29 +52,10 @@ def main():
     ax = 0.0
     ay = 0.0
     az = 0.0
-    step = 0.08
     sys.stdout.write("\033[?251\033[2J")
     sys.stdout.flush()
     try:
         while True:
-            if msvcrt.kbhit():
-                key = msvcrt.getch().lower()
-                if key ==b'w':
-                    ax += step
-                elif key ==b's':
-                    ax -= step
-                elif key ==b'a':
-                    ay -= step
-                elif key ==b'd':
-                    ay += step
-                elif key ==b'q':
-                    az -=step
-                elif key ==b'e':
-                    az += step
-                elif key ==b'r':
-                    ax=ay=az=0
-                elif key ==b'\x1b':
-                    break
             buffer = [
                 [" "] * WIDTH
                 for _ in range(HEIGHT)
@@ -96,7 +77,9 @@ def main():
             frame = "\n".join("".join(row) for row in buffer)
             sys.stdout.write("\033[H" + frame)
             sys.stdout.flush()
-
+            ax += 0.03
+            ay +=0.02
+            az += 0.02
 
             time.sleep(0.05)
     except KeyboardInterrupt:
