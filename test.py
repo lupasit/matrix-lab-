@@ -1,7 +1,6 @@
 import matrix as mt
 import time
 import sys
-import msvcrt
 WIDTH = 80
 HEIGHT = 30
 vert = [
@@ -80,8 +79,7 @@ def main():
             ax += 0.03
             ay +=0.02
             az += 0.02
-
-            time.sleep(0.05)
+            time.sleep(0.06)
     except KeyboardInterrupt:
         pass
     finally:
