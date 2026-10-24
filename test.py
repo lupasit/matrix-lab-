@@ -79,7 +79,7 @@ def main():
             ax += 0.03
             ay +=0.02
             az += 0.02
-            time.sleep(0.06)
+            time.sleep(0.03)
     except KeyboardInterrupt:
         pass
     finally:

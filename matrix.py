@@ -251,8 +251,8 @@ def matrixRotateDeg(A:list,angX:float,angY:float,angZ:float,x:str)-> list[list]:
         ]
         return multiMatrix(C,A)
 rotateDeg = matrixRotateDeg
-def normalizeRad(x:float)->float:
-    return (x+pi)%(2*pi)-pi
+def addElement(matrix:list[list],i:int,j:int,element:float)->list[list]:
+    matrix[i][j] = element
 #mathematical analysis\матанализ
 def integrate(f,a,b,n):
     dx = (b-a)/n
@@ -262,6 +262,8 @@ def integrate(f,a,b,n):
         total += f(x) * dx
     return total
 #Trigonometry\Тригонометрия
+def normalizeRad(x:float)->float:
+    return (x+pi)%(2*pi)-pi
 def rsin(x:float,k = 20)->float:
     x = normalizeRad(x)
     res = 0
