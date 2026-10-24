@@ -178,7 +178,7 @@ def cramer(A,B):
         det_Ai = universalDet(A_i)
         x.append(det_Ai/det_A)
     return x
-def matrixRotateRad(A:list[list],radX:float,radY:float,radZ:float,x:str)-> list:
+def matrixRotateRad(A:list[list],radX:float,radY:float,radZ:float,x:str)-> list[list]:
     n = len(A)
     an = len(A[0])
     if n == 0:
@@ -213,7 +213,7 @@ def matrixRotateRad(A:list[list],radX:float,radY:float,radZ:float,x:str)-> list:
         ]
         return multiMatrix(C,A)
 rotateRad = matrixRotateRad
-def matrixRotateDeg(A:list,angX:float,angY:float,angZ:float,x:str)-> list:
+def matrixRotateDeg(A:list,angX:float,angY:float,angZ:float,x:str)-> list[list]:
     n = len(A)
     an = len(A[0])
     radX = degtorad(angX)
@@ -303,3 +303,15 @@ def factorial(n:int):
 pi = 3.141592653589793
 e = 2.718281828459045
 g = 9.81
+class Matrix:
+    def __init__(self,rows,cols):
+        self.rows = rows
+        self.cols = cols
+        self.data = [
+            [0 for j in range(cols)] for i in range(rows)
+        ]
+    def show(self):
+        for row in self.data:
+            print(row)
+    def set_element(self,i,j,value):
+        self.data[i][j] = value
