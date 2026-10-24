@@ -303,16 +303,3 @@ def factorial(n:int):
 pi = 3.141592653589793
 e = 2.718281828459045
 g = 9.81
-#physics/физика
-class Matrix:
-    def __init__(self,rows,cols):
-        self.rows = rows
-        self.cols = cols
-        self.data = [
-            [0 for j in range(cols)] for i in range(rows)
-        ]
-    def show(self):
-        for row in self.data:
-            print(row)
-    def set_element(self,i,j,value):
-        self.data[i][j] = value
