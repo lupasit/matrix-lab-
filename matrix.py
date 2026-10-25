@@ -282,6 +282,30 @@ class Matrix:
             for j in range(self.cols):
                 res.data[i][j] = self.data[i][j] + other.data[i][j]
         return res
+    def __sub__(self, other):
+        if self.rows != other.rows or self.cols != other.cols:
+            raise ValueError("Matrix not equal")
+        res = Matrix(self.rows,self.cols)
+        for i in range(self.rows):
+            for j in range(self.cols):
+                res.data[i][j] = self.data[i][j] - other.data[i][j]
+        return res
+    def __matmul__(self, other):
+        if not isinstance(other, Matrix):
+            raise TypeError("Матрицу можно умножить только на другую матрицу")
+        if self.cols != other.rows:
+            raise ValueError(
+                f"Несовпадающие размеры: матрицу {self.rows}x{self.cols} "
+                f"нельзя умножить на матрицу {other.rows}x{other.cols}"
+            )
+        res = Matrix(self.rows,self.cols)
+        for i in range(self.rows):
+            for j in range(other.cols):
+                for k in range(self.cols):
+                    res.data[i][j] += self.data[i][k] * other.data[k][j]
+        return res
+
+
 
 
 
