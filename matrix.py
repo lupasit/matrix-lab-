@@ -253,6 +253,38 @@ def matrixRotateDeg(A:list,angX:float,angY:float,angZ:float,x:str)-> list[list]:
 rotateDeg = matrixRotateDeg
 def addElement(matrix:list[list],i:int,j:int,element:float)->list[list]:
     matrix[i][j] = element
+class Matrix:
+    def __init__(self,rows,cols):
+        self.rows = rows
+        self.cols = cols
+        self.data = [
+            [0 for j in range(cols)] for i in range(rows)
+        ]
+    def show(self):
+        for row in self.data:
+            print(row)
+    def set_element(self,i,j,value):
+        self.data[i][j] = value
+    def classfindDet(self):
+        print(findDet(self.data))
+    def edentity(self):
+        for i in range(self.rows):
+            for j in range(self.cols):
+                if i==j:
+                    self.data[i][j] = 1
+                else:
+                    self.data[i][j] = 0
+    def __add__(self, other):
+        if self.rows != other.rows or self.cols != other.cols:
+            raise ValueError("Matrix not equal")
+        res = Matrix(self.rows,self.cols)
+        for i in range(self.rows):
+            for j in range(self.cols):
+                res.data[i][j] = self.data[i][j] + other.data[i][j]
+        return res
+
+
+
 #mathematical analysis\матанализ
 def integrate(f,a,b,n):
     dx = (b-a)/n
