@@ -304,10 +304,16 @@ class Matrix:
                 for k in range(self.cols):
                     res.data[i][j] += self.data[i][k] * other.data[k][j]
         return res
-
-
-
-
+    def __mul__(self, other):
+        res = Matrix(self.rows,self.cols)
+        for i in range(self.rows):
+            for j in range(self.cols):
+                res.data[i][j] += self.data[i][j] * other
+        return res
+    def transpose(self):
+        res = Matrix(self.rows,self.cols)
+        res.data = [list(row) for row in zip(self.data)]
+        return res
 
 #mathematical analysis\матанализ
 def integrate(f,a,b,n):
