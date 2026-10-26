@@ -1,5 +1,3 @@
-from tkinter.constants import BROWSE
-
 import matrix as mt
 class Matrix:
     def __init__(self,rows,cols):
