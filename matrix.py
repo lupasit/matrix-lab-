@@ -314,7 +314,10 @@ class Matrix:
         res = Matrix(self.rows,self.cols)
         res.data = [list(row) for row in zip(self.data)]
         return res
-
+    def showElement(self,i,j):
+        print(self.data[i][j])
+    def returnElemt(self,i,j):
+        return self.data[i][j]
 #mathematical analysis\матанализ
 def integrate(f,a,b,n):
     dx = (b-a)/n

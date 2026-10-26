@@ -1,4 +1,10 @@
-import matrix as mt
-a = mt.edentity(3,3)
-mt.addElement(a,0,0,30)
-mt.print_mat(a)
+import random
+import matrix as  mt
+A = mt.Matrix(20,20)
+A.edentity()
+for i in range(A.rows):
+    for j in range(A.cols):
+        A.set_element(i,j,random.random())
+for i in range(A.rows):
+    for j in range(A.cols):
+        if A.returnElemt(i,j) =
