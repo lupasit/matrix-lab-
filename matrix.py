@@ -253,6 +253,42 @@ def matrixRotateDeg(A:list,angX:float,angY:float,angZ:float,x:str)-> list[list]:
 rotateDeg = matrixRotateDeg
 def addElement(matrix:list[list],i:int,j:int,element:float)->list[list]:
     matrix[i][j] = element
+
+
+def determinant_gauss(matrix):
+    # Копируем матрицу, чтобы не менять исходные данные
+    n = len(matrix)
+    A = [[float(x) for x in row] for row in matrix]
+
+    det = 1.0
+    sign = 1
+
+    for i in range(n):
+        # 1. Поиск максимального элемента по столбцу (для численной устойчивости)
+        pivot_row = i
+        for r in range(i + 1, n):
+            if abs(A[r][i]) > abs(A[pivot_row][i]):
+                pivot_row = r
+
+        # Если максимальный элемент равен 0, то весь столбец нулевой -> det = 0
+        if abs(A[pivot_row][i]) < 1e-9:
+            return 0.0
+
+        # 2. Перестановка строк, если это необходимо
+        if pivot_row != i:
+            A[i], A[pivot_row] = A[pivot_row], A[i]
+            sign *= -1  # Меняем знак определителя
+
+        # 3. Обнуление элементов ниже главной диагонали
+        for r in range(i + 1, n):
+            factor = A[r][i] / A[i][i]
+            for c in range(i, n):
+                A[r][c] -= factor * A[i][c]
+
+        # 4. Накопление произведения элементов главной диагонали
+        det *= A[i][i]
+
+    return sign * det
 class Matrix:
     def __init__(self,rows,cols):
         self.rows = rows
@@ -266,7 +302,7 @@ class Matrix:
     def set_element(self,i,j,value):
         self.data[i][j] = value
     def classfindDet(self):
-        print(findDet(self.data))
+        return universalDet(self.data)
     def edentity(self):
         for i in range(self.rows):
             for j in range(self.cols):
@@ -316,8 +352,11 @@ class Matrix:
         return res
     def showElement(self,i,j):
         print(self.data[i][j])
-    def returnElemt(self,i,j):
+    def returnElement(self,i,j):
         return self.data[i][j]
+    def removeElement(self,i,j):
+        self.data[i][j] = 0
+
 #mathematical analysis\матанализ
 def integrate(f,a,b,n):
     dx = (b-a)/n
