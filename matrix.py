@@ -361,7 +361,19 @@ class Matrix:
         for i in range(self.rows):
             for j in range(self.cols):
                 self.data[i][j] = random.random()
-                
+
+    # def universalMinor(self, row: int, col: int):
+    #     res = []
+    #     for i in range(self.rows):
+    #         if i == self.rows:
+    #             continue
+    #         new_row = []
+    #         for j in range(self.cols):
+    #             if j == self.cols:
+    #                 continue
+    #             new_row.append(self.data[i][j])
+    #         res.append(new_row)
+    #     return res
 
 
 
