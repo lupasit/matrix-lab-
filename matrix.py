@@ -1,3 +1,4 @@
+import random
 #linear algebra\линал
 def createMatrix(row:int,col:int)->list[list]:
     matrix = [[0 for i in range(col)] for j in range(row)]
@@ -301,8 +302,6 @@ class Matrix:
             print(row)
     def set_element(self,i,j,value):
         self.data[i][j] = value
-    def classfindDet(self):
-        return universalDet(self.data)
     def edentity(self):
         for i in range(self.rows):
             for j in range(self.cols):
@@ -356,6 +355,15 @@ class Matrix:
         return self.data[i][j]
     def removeElement(self,i,j):
         self.data[i][j] = 0
+    def detGauss(self):
+        return determinant_gauss(self.data)
+    def MatrixRandom(self):
+        for i in range(self.rows):
+            for j in range(self.cols):
+                self.data[i][j] = random.random()
+                
+
+
 
 #mathematical analysis\матанализ
 def integrate(f,a,b,n):
